@@ -1,0 +1,26 @@
+{
+    "name": "camilamilagros/chuck_norris_jokes",
+    "description": "hey",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Camila Chavez",
+            "email": "camila.chavez@pucp.pe"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Camilamilagros\\ChuckNorrisJokes\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Camilamilagros\\ChuckNorrisJokes\\Tests\\": "tests/"
+        }
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.0"
+    }
+}
