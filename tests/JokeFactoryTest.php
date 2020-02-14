@@ -2,8 +2,8 @@
 
 namespace Camilamilagros\ChuckNorrisJokes\Tests;
 
-use PHPUnit\Framework\TestCase;
 use Camilamilagros\ChuckNorrisJokes\JokeFactory;
+use PHPUnit\Framework\TestCase;
 
 class JokeFactoryTest extends TestCase
 {
@@ -22,7 +22,7 @@ class JokeFactoryTest extends TestCase
     {
         $predefinedJokes = [
             'ble',
-            'bli'
+            'bli',
         ];
         $jokes = new JokeFactory();
 
