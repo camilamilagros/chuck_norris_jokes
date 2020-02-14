@@ -6,7 +6,7 @@ class JokeFactory
 {
     protected array $jokes = [
         'ble',
-        'bli'
+        'bli',
     ];
 
     public function __construct(array $jokes = null)
