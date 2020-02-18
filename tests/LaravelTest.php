@@ -2,25 +2,24 @@
 
 namespace Camilamilagros\ChuckNorrisJokes\Tests;
 
-use Orchestra\Testbench\TestCase;
-use Camilamilagros\ChuckNorrisJokes\Facades\ChuckNorris;
-use Camilamilagros\ChuckNorrisJokes\Console\ChuckNorrisJoke;
 use Camilamilagros\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
+use Camilamilagros\ChuckNorrisJokes\Facades\ChuckNorris;
 use Illuminate\Support\Facades\Artisan;
+use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
 {
     protected function getPackageProviders($app)
     {
         return [
-            ChuckNorrisJokesServiceProvider::class
+            ChuckNorrisJokesServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'ChuckNorris' => ChuckNorris::class
+            'ChuckNorris' => ChuckNorris::class,
         ];
     }
 
@@ -35,6 +34,6 @@ class LaravelTest extends TestCase
         $this->artisan('chuck-norris');
 
         $output = Artisan::output();
-        $this->assertEquals('some joke' . PHP_EOL, $output);
+        $this->assertEquals('some joke'.PHP_EOL, $output);
     }
 }
