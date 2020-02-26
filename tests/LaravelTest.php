@@ -3,10 +3,11 @@
 namespace Camilamilagros\ChuckNorrisJokes\Tests;
 
 use Orchestra\Testbench\TestCase;
+use Illuminate\Support\Facades\Artisan;
+use Camilamilagros\ChuckNorrisJokes\Models\Joke;
 use Camilamilagros\ChuckNorrisJokes\Facades\ChuckNorris;
 use Camilamilagros\ChuckNorrisJokes\Console\ChuckNorrisJoke;
 use Camilamilagros\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
-use Illuminate\Support\Facades\Artisan;
 
 class LaravelTest extends TestCase
 {
@@ -36,5 +37,37 @@ class LaravelTest extends TestCase
 
         $output = Artisan::output();
         $this->assertEquals('some joke' . PHP_EOL, $output);
+    }
+
+    /** @test */
+    public function the_route_can_be_accessed()
+    {
+        ChuckNorris::shouldReceive('getRandomJoke')
+            ->once()
+            ->andReturn('some joke');
+
+        $this->get('/chuck-norris')
+            ->assertViewIs('chuck-norris::joke')
+            ->assertViewHas('joke', 'some joke')
+            ->assertStatus(200);
+    }
+
+    protected function getEnvironmentSetUp($app)
+    {
+        include_once __DIR__ . '/../database/migrations/create_jokes_table.php.stub';
+
+        (new \CreateJokesTable)->up();
+    }
+
+    /** @test */
+    public function it_can_access_the_database()
+    {
+        $joke = new Joke();
+        $joke->joke = 'this is albufera';
+        $joke->save();
+
+        $newJoke = Joke::find($joke->id);
+
+        $this->assertSame($newJoke->joke, 'this is albufera');
     }
 }
