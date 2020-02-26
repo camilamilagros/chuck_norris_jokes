@@ -2,12 +2,11 @@
 
 namespace Camilamilagros\ChuckNorrisJokes\Tests;
 
-use Orchestra\Testbench\TestCase;
-use Illuminate\Support\Facades\Artisan;
-use Camilamilagros\ChuckNorrisJokes\Models\Joke;
-use Camilamilagros\ChuckNorrisJokes\Facades\ChuckNorris;
-use Camilamilagros\ChuckNorrisJokes\Console\ChuckNorrisJoke;
 use Camilamilagros\ChuckNorrisJokes\ChuckNorrisJokesServiceProvider;
+use Camilamilagros\ChuckNorrisJokes\Facades\ChuckNorris;
+use Camilamilagros\ChuckNorrisJokes\Models\Joke;
+use Illuminate\Support\Facades\Artisan;
+use Orchestra\Testbench\TestCase;
 
 class LaravelTest extends TestCase
 {
@@ -36,7 +35,7 @@ class LaravelTest extends TestCase
         $this->artisan('chuck-norris');
 
         $output = Artisan::output();
-        $this->assertEquals('some joke' . PHP_EOL, $output);
+        $this->assertEquals('some joke'.PHP_EOL, $output);
     }
 
     /** @test */
@@ -54,7 +53,7 @@ class LaravelTest extends TestCase
 
     protected function getEnvironmentSetUp($app)
     {
-        include_once __DIR__ . '/../database/migrations/create_jokes_table.php.stub';
+        include_once __DIR__.'/../database/migrations/create_jokes_table.php.stub';
 
         (new \CreateJokesTable)->up();
     }
