@@ -14,14 +14,14 @@ class LaravelTest extends TestCase
     protected function getPackageProviders($app)
     {
         return [
-            ChuckNorrisJokesServiceProvider::class
+            ChuckNorrisJokesServiceProvider::class,
         ];
     }
 
     protected function getPackageAliases($app)
     {
         return [
-            'ChuckNorris' => ChuckNorris::class
+            'ChuckNorris' => ChuckNorris::class,
         ];
     }
 
